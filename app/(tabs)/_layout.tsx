@@ -9,23 +9,23 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "#e29447",
+        tabBarActiveTintColor: '#0096fa'
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: "首页",
-          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+          title: '首页',
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />
         }}
       />
       <Tabs.Screen
         name="users"
         options={{
-          title: "用户",
-          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+          title: '用户',
+          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />
         }}
       />
     </Tabs>
-  );
+  )
 }
