@@ -16,13 +16,20 @@ import { Link, router } from "expo-router";
 import avator from "@/assets/images/user.jpeg";
 export default function Index() {
   const handleUserinfo = () => {
-    router.setParams({ title: "用户简介!" });
     router.navigate({ pathname: "/users/profile" });
   };
   const handlePrivacy = () => {
-    router.setParams({ title: "隐私条款!" });
     router.navigate({pathname: "/users/privacy" });
   };
+  const handleSetting = () => {
+    router.navigate({ pathname: '/users/setting' })
+  }
+  const handleAbout = () => {
+    router.navigate({ pathname: '/users/about' })
+  }
+  const handleQuestion = () => {
+    router.navigate({ pathname: '/users/question' })
+  }
   return (
     <View style={styles.User}>
       <View style={styles.userInfo}>
@@ -55,11 +62,7 @@ export default function Index() {
             <Text style={styles.texts}>待点验</Text>
           </View>
           <View style={styles.tool}>
-            <MaterialCommunityIcons
-              name="alert-circle-check"
-              size={22}
-              color="#0096fa"
-            />
+            <MaterialCommunityIcons name="alert-circle-check" size={22} color="#0096fa" />
             <Text style={styles.texts}>已报废</Text>
           </View>
           <View style={styles.tool}>
@@ -71,23 +74,23 @@ export default function Index() {
         <View style={styles.settingItem}>
           <TouchableOpacity onPress={handlePrivacy}>
             <View style={styles.setting}>
-              <Text style={styles.left}>
-                <Feather name="user" size={14} color="black" />
-                <Text style={styles.texts}>编辑资料</Text>
-              </Text>
-              <AntDesign name="right" size={14} color="black" />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={handlePrivacy}>
-            <View style={styles.setting}>
-              <Text style={styles.left}>
+              <Text style={styles.left} onPress={handleSetting}>
                 <AntDesign name="setting" size={14} color="black" />
                 <Text style={styles.texts}>应用设置</Text>
               </Text>
               <AntDesign name="right" size={14} color="black" />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={handlePrivacy}>
+          <TouchableOpacity onPress={handleAbout}>
+            <View style={styles.setting}>
+              <Text style={styles.left}>
+                <Feather name="user" size={14} color="black" />
+                <Text style={styles.texts}>关于我们</Text>
+              </Text>
+              <AntDesign name="right" size={14} color="black" />
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleQuestion}>
             <View style={styles.setting}>
               <Text style={styles.left}>
                 <AntDesign name="questioncircleo" size={14} color="black" />
@@ -109,7 +112,7 @@ export default function Index() {
         </View>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
