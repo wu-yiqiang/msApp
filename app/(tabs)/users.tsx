@@ -1,33 +1,47 @@
-import { View, Text, Button, StyleSheet, Image } from 'react-native'
-import FontAwesome from '@expo/vector-icons/FontAwesome'
-import AntDesign from '@expo/vector-icons/AntDesign'
-import Feather from '@expo/vector-icons/Feather'
-import MaterialIcons from '@expo/vector-icons/MaterialIcons'
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import EvilIcons from "@expo/vector-icons/EvilIcons";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import Feather from "@expo/vector-icons/Feather";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Link, router } from "expo-router";
-import img from '@/assets/images/user.jpeg';
+import avator from "@/assets/images/user.jpeg";
 export default function Index() {
-   const openUser = () => {
-          router.navigate("/users/profile");
-   }
+  const handleUserinfo = () => {
+    router.setParams({ title: "用户简介!" });
+    router.navigate({ pathname: "/users/profile" });
+  };
   const handlePrivacy = () => {
-                router.navigate('/users/privacy')
-  }
+    router.setParams({ title: "隐私条款!" });
+    router.navigate({pathname: "/users/privacy" });
+  };
   return (
     <View style={styles.User}>
       <View style={styles.userInfo}>
         <View style={styles.images}>
-          <Image style={styles.avator} source={img} />
-          <Text style={styles.infos}>
-            <Text style={styles.name}>金太阳</Text>
-            <Text style={styles.sign}>该用户什么信息也没有留下</Text>
-          </Text>
+          <Image style={styles.avator} source={avator} />
+          <View style={styles.infos}>
+            <View>
+              <Text style={styles.name}>金太阳</Text>
+            </View>
+            <View>
+              <Text style={styles.sign}>该用户什么信息也没有留下</Text>
+            </View>
+          </View>
         </View>
         <View style={styles.info}>
-          <Text>用户信息</Text>
-          <View style={styles.icons}>
+          <Text onPress={handleUserinfo}>
+            <Text>用户信息</Text>
             <AntDesign name="right" size={16} color="black" />
-          </View>
+          </Text>
         </View>
       </View>
       <View style={styles.contents}>
@@ -41,7 +55,11 @@ export default function Index() {
             <Text style={styles.texts}>待点验</Text>
           </View>
           <View style={styles.tool}>
-            <MaterialCommunityIcons name="alert-circle-check" size={22} color="#0096fa" />
+            <MaterialCommunityIcons
+              name="alert-circle-check"
+              size={22}
+              color="#0096fa"
+            />
             <Text style={styles.texts}>已报废</Text>
           </View>
           <View style={styles.tool}>
@@ -49,160 +67,146 @@ export default function Index() {
             <Text style={styles.texts}>已点验</Text>
           </View>
         </View>
+
         <View style={styles.settingItem}>
-          <View style={styles.setting}>
-            <Text style={styles.left}>
-              <View style={styles.icons}>
-                <Feather name="user" size={14} color="black" />
-              </View>
-              <Text style={styles.texts}>编辑资料</Text>
-            </Text>
-            <View style={styles.icons}>
-              <AntDesign name="right" size={14} color="black" />
-            </View>
-          </View>
-          <View style={styles.setting}>
-            <Text style={styles.left}>
-              <View style={styles.icons}>
-                <AntDesign name="setting" size={14} color="black" />
-              </View>
-              <Text style={styles.texts}>应用设置</Text>
-            </Text>
-            <View style={styles.icons}>
-              <AntDesign name="right" size={14} color="black" />
-            </View>
-          </View>
-          <View style={styles.setting}>
-            <Text style={styles.left}>
-              <View style={styles.icons}>
-                <FontAwesome name="question" size={14} color="black" />
-              </View>
-              <Text style={styles.texts}>常见问题</Text>
-            </Text>
-            <View style={styles.icons}>
-              <AntDesign name="right" size={14} color="black" />
-            </View>
-          </View>
-          <Text onPress={handlePrivacy}>
+          <TouchableOpacity onPress={handlePrivacy}>
             <View style={styles.setting}>
               <Text style={styles.left}>
-                <View style={styles.icons}>
-                  <MaterialIcons name="privacy-tip" size={14} color="black" />
-                </View>
+                <Feather name="user" size={14} color="black" />
+                <Text style={styles.texts}>编辑资料</Text>
+              </Text>
+              <AntDesign name="right" size={14} color="black" />
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handlePrivacy}>
+            <View style={styles.setting}>
+              <Text style={styles.left}>
+                <AntDesign name="setting" size={14} color="black" />
+                <Text style={styles.texts}>应用设置</Text>
+              </Text>
+              <AntDesign name="right" size={14} color="black" />
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handlePrivacy}>
+            <View style={styles.setting}>
+              <Text style={styles.left}>
+                <AntDesign name="questioncircleo" size={14} color="black" />
+                <Text style={styles.texts}>常见问题</Text>
+              </Text>
+              <AntDesign name="right" size={14} color="black" />
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={handlePrivacy}>
+            <View style={styles.setting}>
+              <Text style={styles.left}>
+                <AntDesign name="infocirlceo" size={14} color="black" />
                 <Text style={styles.texts}>隐私条款</Text>
               </Text>
-              <View style={styles.icons}>
-                <AntDesign name="right" size={14} color="black" />
-              </View>
+              <AntDesign name="right" size={14} color="black" />
             </View>
-          </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   User: {
     flex: 1,
-    display: 'flex',
-    justifyContent: 'flex-start',
-    flexDirection: 'column'
+    display: "flex",
+    justifyContent: "flex-start",
+    flexDirection: "column",
   },
   userInfo: {
-    height: 140,
-    width: '100%',
-    backgroundColor: '#0096fa',
-    display: 'flex',
+    height: 180,
+    width: "100%",
+    boxSizing: "borderBox",
     padding: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "#0096fa",
   },
   images: {
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
     columnGap: 10,
-    alignContent: 'center'
+    alignContent: "center",
   },
   avator: {
     width: 60,
     height: 60,
-    aspectRatio: '1/1',
-    objectFit: "contain",
-    borderRadius: '50%'
+    aspectRatio: "1/1",
+    borderRadius: 9999,
   },
   infos: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignContent: 'center'
+    display: "flex",
+    flexDirection: "column",
+    rowGap: 10,
   },
   name: {
-    fontSize: 16
+    fontSize: 16,
   },
   sign: {
-    fontSize: 12
+    fontSize: 12,
   },
   info: {
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
     columnGap: 10,
-    fontSize: 16
+    fontSize: 16,
   },
   contents: {
     transform: [{ translateY: -30 }],
     padding: 10,
     flex: 1,
-    color: '#f0f0f0',
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: 14
+    color: "#f0f0f0",
+    display: "flex",
+    flexDirection: "column",
+    rowGap: 14,
   },
   toolBox: {
     padding: 10,
     paddingTop: 14,
     paddingBottom: 14,
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
     borderRadius: 4,
-    display: 'flex',
-    flexDirection: 'row'
+    display: "flex",
+    flexDirection: "row",
   },
   tool: {
     flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    rowGap: 6,
   },
   texts: {
-    fontSize: 14
+    fontSize: 14,
   },
   settingItem: {
     borderRadius: 4,
-    backgroundColor: '#ffffff',
-    display: 'flex',
-    flexDirection: 'column'
+    backgroundColor: "#ffffff",
+    display: "flex",
+    flexDirection: "column",
   },
   setting: {
     padding: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
     borderBottomWidth: 1,
-    borderBottomColor: '#e8e8e8',
-    justifyContent: 'space-between',
-    alignContent: 'center'
+    borderBottomColor: "#e8e8e8",
+    justifyContent: "space-between",
+    alignContent: "center",
   },
   left: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignContent: 'center',
-    columnGap: 10
+    display: "flex",
+    flexDirection: "row",
+    alignContent: "center",
+    justifyContent: "flex-start",
+    columnGap: 6,
   },
-  icons: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignContent: 'center'
-  }
-})
+});
