@@ -74,38 +74,38 @@ export default function Index() {
         <View style={styles.settingItem}>
           <TouchableOpacity onPress={handleSetting}>
             <View style={styles.setting}>
-              <Text style={styles.left}>
+              <View style={styles.left}>
                 <AntDesign name="setting" size={14} color="black" />
                 <Text style={styles.texts}>应用设置</Text>
-              </Text>
+              </View>
               <AntDesign name="right" size={14} color="black" />
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={handleAbout}>
             <View style={styles.setting}>
-              <Text style={styles.left}>
+              <View style={styles.left}>
                 <Feather name="user" size={14} color="black" />
                 <Text style={styles.texts}>关于我们</Text>
-              </Text>
+              </View>
               <AntDesign name="right" size={14} color="black" />
             </View>
           </TouchableOpacity>
           <TouchableOpacity onPress={handleQuestion}>
             <View style={styles.setting}>
-              <Text style={styles.left}>
+              <View style={styles.left}>
                 <AntDesign name="questioncircleo" size={14} color="black" />
                 <Text style={styles.texts}>常见问题</Text>
-              </Text>
+              </View>
               <AntDesign name="right" size={14} color="black" />
             </View>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={handlePrivacy}>
             <View style={styles.setting}>
-              <Text style={styles.left}>
+              <View style={styles.left}>
                 <AntDesign name="infocirlceo" size={14} color="black" />
                 <Text style={styles.texts}>隐私条款</Text>
-              </Text>
+              </View>
               <AntDesign name="right" size={14} color="black" />
             </View>
           </TouchableOpacity>
@@ -208,8 +208,8 @@ const styles = StyleSheet.create({
   left: {
     display: "flex",
     flexDirection: "row",
-    alignContent: "center",
+    alignItems: "center",
     justifyContent: "flex-start",
-    columnGap: 6,
+    columnGap: 4,
   },
 });
