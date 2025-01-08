@@ -48,7 +48,7 @@ export default function About() {
           <View style={styles.item}>
             <Text style={styles.title}>官方网站</Text>
             <View style={styles.right}>
-              <Text style={styles.info}>https://sutter9527.top< /Text>
+              <Text style={styles.info}>https://sutter9527.top</Text>
               <AntDesign name="right" size={14} color="black" />
             </View>
           </View>
