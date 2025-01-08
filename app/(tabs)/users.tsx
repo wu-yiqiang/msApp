@@ -90,7 +90,7 @@ export default function Index() {
               <AntDesign name="right" size={14} color="black" />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={handleQuestion}>
+          {/* <TouchableOpacity onPress={handleQuestion}>
             <View style={styles.setting}>
               <View style={styles.left}>
                 <AntDesign name="questioncircleo" size={14} color="black" />
@@ -98,7 +98,7 @@ export default function Index() {
               </View>
               <AntDesign name="right" size={14} color="black" />
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
           <TouchableOpacity onPress={handlePrivacy}>
             <View style={styles.setting}>
