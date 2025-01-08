@@ -17,42 +17,30 @@ export default function About() {
         </View>
       </View>
       <View style={styles.infoitem}>
-        <TouchableOpacity>
           <View style={styles.item}>
             <Text style={styles.title}>版本信息</Text>
             <View style={styles.right}>
               <Text style={styles.info}>v1.0.0</Text>
-              <AntDesign name="right" size={14} color="black" />
             </View>
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
           <View style={styles.item}>
             <Text style={styles.title}>官方邮箱</Text>
             <View style={styles.right}>
               <Text style={styles.info}>wu_yiqiang@outlook.com</Text>
-              <AntDesign name="right" size={14} color="black" />
             </View>
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
           <View style={styles.item}>
             <Text style={styles.title}>服务热线</Text>
             <View style={styles.right}>
               <Text style={styles.info}>400-999-9988</Text>
-              <AntDesign name="right" size={14} color="black" />
             </View>
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
           <View style={styles.item}>
             <Text style={styles.title}>官方网站</Text>
             <View style={styles.right}>
               <Text style={styles.info}>https://sutter9527.top</Text>
-              <AntDesign name="right" size={14} color="black" />
             </View>
           </View>
-        </TouchableOpacity>
       </View>
     </View>
   )
