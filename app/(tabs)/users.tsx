@@ -72,9 +72,9 @@ export default function Index() {
         </View>
 
         <View style={styles.settingItem}>
-          <TouchableOpacity onPress={handlePrivacy}>
+          <TouchableOpacity onPress={handleSetting}>
             <View style={styles.setting}>
-              <Text style={styles.left} onPress={handleSetting}>
+              <Text style={styles.left}>
                 <AntDesign name="setting" size={14} color="black" />
                 <Text style={styles.texts}>应用设置</Text>
               </Text>
