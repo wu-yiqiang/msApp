@@ -19,6 +19,15 @@ export default function Setting() {
         <TouchableOpacity onPress={handleResetPassword}>
           <View style={styles.setting}>
             <View style={styles.left}>
+              <AntDesign name="user" size={18} color="#0096fa" />
+              <Text style={styles.texts}>编辑信息</Text>
+            </View>
+            <AntDesign name="right" size={14} color="black" />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleResetPassword}>
+          <View style={styles.setting}>
+            <View style={styles.left}>
               <AntDesign name="lock" size={18} color="#0096fa" />
               <Text style={styles.texts}>修改密码</Text>
             </View>

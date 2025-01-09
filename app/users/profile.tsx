@@ -49,9 +49,9 @@ export default function Profile() {
           <Text style={styles.info}>网络工程师</Text>
         </View>
       </View>
-      <View style={styles.footer}>
+      {/* <View style={styles.footer}>
         <Button onPress={handleEditInfo} title="编辑信息" />
-      </View>
+      </View> */}
     </View>
   )
 }
