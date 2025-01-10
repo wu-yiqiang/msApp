@@ -19,14 +19,14 @@ export const Dialog = (props: any) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.title}>{contents?.number}</Text>
-            <QRCode value={JSON.stringify(contents)} size={200} />
+            <QRCode value={JSON.stringify(contents)} size={220} />
           </View>
           <Text
             onPress={() => {
               close();
             }}
           >
-            <AntDesign name="closecircleo" size={30} color="#FFFFFF" />
+            <AntDesign name="closecircleo" size={40} color="#FFFFFF" />
           </Text>
         </View>
       </Modal>

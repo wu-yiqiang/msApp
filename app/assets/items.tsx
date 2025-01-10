@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, Button, Image } from 'react-native'
 import Status from "@/components/Status";
+import CheckStatus from '@/components/CheckStatus'
 import avator from "@/assets/images/user.jpeg";
 import { Dialog } from "@/components/Dialog";
 import { Link, Stack } from "expo-router";
@@ -26,7 +27,7 @@ export default function AssetsItem(props: any) {
   return (
     <View style={styles.AssetsItem}>
       <View style={styles.currentStatus}>
-        <Text style={styles.statusText}>{status}</Text>
+        <CheckStatus status={status} />
       </View>
       <View style={styles.status}>
         <View style={styles.assetsStatus}>
@@ -107,13 +108,9 @@ export default function AssetsItem(props: any) {
           <Button title="正常" />
         </View>
       </View>
-      <Dialog
-        visible={visible}
-        contents={props?.target}
-        close={handleQrCodeClose}
-      />
+      <Dialog visible={visible} contents={props?.target} close={handleQrCodeClose} />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -129,10 +126,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 10,
     top: 0,
-    padding: 10,
-    backgroundColor: "red",
-    borderBottomRightRadius: 3,
-    borderBottomLeftRadius: 3,
   },
   statusText: {
     color: "#FFFFFF",

@@ -1,28 +1,23 @@
 import { View, Text, Button, StyleSheet } from "react-native";
 import { Link, router } from "expo-router";
 
-export default function Status(props: any) {
+export default function CheckStatus(props: any) {
   const status = props?.status;
   // 报废 正常 闲置
   return (
     <View style={styles.Status}>
       {status == 0 ? (
-        <View style={styles.scrap}>
-          <Text style={styles.text}>已报废</Text>
+        <View style={styles.checked}>
+          <Text style={styles.text}>待点验</Text>
         </View>
       ) : null}
       {status == 1 ? (
-        <View style={styles.used}>
-          <Text style={styles.text}>使用中</Text>
-        </View>
-      ) : null}
-      {status == 2 ? (
-        <View style={styles.unused}>
-          <Text style={styles.text}>已闲置</Text>
+        <View style={styles.uncheck}>
+          <Text style={styles.text}>已点验</Text>
         </View>
       ) : null}
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -37,31 +32,24 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#FFFFFF'
   },
-  scrap: {
-    padding: 4,
+  uncheck: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'red',
-    borderRadius: 4
+    backgroundColor: 'green',
+    padding: 10,
+    borderBottomRightRadius: 3,
+    borderBottomLeftRadius: 3
   },
-  used: {
-    padding: 4,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#0096fa',
-    borderRadius: 4
-  },
-  unused: {
-    padding: 4,
+  checked: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'grey',
-    borderRadius: 4
+    padding: 10,
+    borderBottomRightRadius: 3,
+    borderBottomLeftRadius: 3
   }
 })
