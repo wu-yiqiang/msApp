@@ -1,17 +1,19 @@
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 import { Link, router } from "expo-router";
 
 export default function Modal() {
   const isPresented = router.canGoBack();
 
-  return (
-    <View>
-      <Text style={{ fontSize: 30 }}>这里是 modal!</Text>
-      {isPresented && (
-        <Link href="../" asChild>
-          <Button title="关闭" />
-        </Link>
-      )}
-    </View>
-  );
+  return <View style={styles.Modal}></View>;
 }
+
+const styles = StyleSheet.create({
+  Modal: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "flex-start",
+    flexDirection: "column",
+    padding: 20,
+    overflow: "scroll",
+  },
+});
