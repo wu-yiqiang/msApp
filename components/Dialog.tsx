@@ -19,7 +19,7 @@ export const Dialog = (props: any) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.title}>{contents?.number}</Text>
-            <QRCode value={JSON.stringify(contents)} size={220} />
+            {/* <QRCode value={JSON.stringify(contents)} size={220} /> */}
           </View>
           <Text
             onPress={() => {
