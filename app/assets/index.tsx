@@ -1,151 +1,81 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Button } from 'react-native'
 import { Link, Stack, router, Tabs } from "expo-router";
 import Items from '@/app/assets/items'
-import { useState } from 'react'
-export default function Assets() {
-  const items = [
-    {
-      id: 1,
-      title: "桌子",
-      categopry: "办公用品",
-      department: "人事行政部",
-      number: "FZC00124533",
-      status: 0,
-      assetsStatus: 1,
-      belong: "sutter",
-      updator: "Tom",
-      update: "2025-11-23 12:34",
-    },
-    {
-      id: 2,
-      title: "椅子",
-      categopry: "办公用品",
-      department: "人事行政部",
-      number: "FZC00123232",
-      status: 1,
-      assetsStatus: 2,
-      belong: "sutter",
-      updator: "Tom",
-      update: "2025-11-23 12:34",
-    },
-    {
-      id: 3,
-      title: "IBM System x3650 M5(5462I55)",
-      categopry: "服务器",
-      department: "系统一部",
-      number: "FZC00124581",
-      status: 1,
-      assetsStatus: 2,
-      belong: "sutter",
-      updator: "Tom",
-      update: "2025-11-23 12:34",
-    },
-    {
-      id: 4,
-      title: "IBM System X3850 X6(3837I01)",
-      categopry: "服务器",
-      department: "系统二部",
-      number: "FZC00124516",
-      status: 1,
-      assetsStatus: 1,
-      belong: "sutter",
-      updator: "Tom",
-      update: "2025-11-23 12:34",
-    },
-    {
-      id: 5,
-      title: "惠普战66",
-      categopry: "台式机",
-      department: "开发部",
-      number: "FZC00122356",
-      status: 1,
-      assetsStatus: 0,
-      belong: "sutter",
-      updator: "Tom",
-      update: "2025-11-23 12:34",
-    },
-    {
-      id: 6,
-      title: "MacBook Pro(M2 2022)",
-      categopry: "笔记本",
-      department: "开发部",
-      number: "FZC00126695",
-      status: 0,
-      assetsStatus: 2,
-      belong: "sutter",
-      updator: "Tom",
-      update: "2025-11-23 12:34",
-    },
-    {
-      id: 7,
-      title: "MacBook Pro(M2 2022)",
-      categopry: "笔记本",
-      department: "开发部",
-      number: "FZC00128894",
-      status: 0,
-      assetsStatus: 1,
-      belong: "sutter",
-      updator: "Tom",
-      update: "2025-11-23 12:34",
-    },
-    {
-      id: 8,
-      title: "MacBook Pro(M2 2022)",
-      categopry: "笔记本",
-      department: "开发部",
-      number: "FZC00127315",
-      status: 0,
-      assetsStatus: 2,
-      belong: "sutter",
-      updator: "Tom",
-      update: "2025-11-23 12:34",
-    },
-    {
-      id: 9,
-      title: "MacBook Pro(M2 2022)",
-      categopry: "笔记本",
-      department: "开发部",
-      number: "FZC00129632",
-      status: 0,
-      assetsStatus: 0,
-      belong: "sutter",
-      updator: "Tom",
-      update: "2025-11-23 12:34",
-    },
-    {
-      id: 10,
-      title: "MacBook Pro(M2 2022)",
-      categopry: "笔记本",
-      department: "开发部",
-      number: "FZC00123278",
-      status: 1,
-      assetsStatus: 1,
-      belong: "sutter",
-      updator: "Tom",
-      update: "2025-11-23 12:34",
-    },
-    {
-      id: 11,
-      title: "MacBook Pro(M2 2022)",
-      categopry: "笔记本",
-      department: "开发部",
-      number: "FZC00123224",
-      status: 1,
-      assetsStatus: 0,
-      belong: "sutter",
-      updator: "Tom",
-      update: "2025-11-23 12:34",
-    },
-  ];
+import { useEffect, useState } from "react";
+export default function Assets(props: any) {
+  const [items, setItems] = useState<any>([]);
+  let [refreshing, setRefreshing] = useState(false);
+  let [count, setCount] = useState(0);
   const handleDetails = (event: Event) => {
     router.navigate({ pathname: "/assets/details" });
+  };
+  const onRefresh = async () => {
+    console.log("刷新");
+  };
+  const onScroll = (event: Event) => {
+    const { contentOffset, contentSize, layoutMeasurement } = event.nativeEvent;
+    const isNearTop = contentOffset.y <= 30; // 10是阈值，可以根据需要调整
+    const isNearBottom =
+      contentOffset.y + layoutMeasurement.height >= contentSize.height - 30; // 10是阈值，可以根据需要调整
+
+    if (isNearTop && refreshing === false) {
+      console.log("滚动顶部了");
+    }
+
+    if (isNearBottom) {
+      const item = {
+        id: 1,
+        title: new Date().getTime(),
+        categopry: "办公用品",
+        department: "人事行政部",
+        number: "FZC00124533",
+        status: 0,
+        assetsStatus: 1,
+        belong: "sutter",
+        updator: "Tom",
+        update: "2025-11-23 12:34",
+      };
+      setItems([...items, item]);
+      console.log("滚动底部了");
+    }
+
+     const init = async () => {
+       const res = await mockRequest();
+       setItems(res);
+       return res;
+     };
+    useEffect(() => {
+      init();
+    }, [count]);
+  };
+ 
+    const mockRequest = () => {
+    let data = []
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        for (let i = 0; i < 10; i++) {
+          data.push({
+            id: i.toString(),
+          })
+        }
+        resolve(data)
+      }, 1000)
+    })
+  }
+  const init = async () => {
+    
+    console.log(res);
   }
   return (
     <View style={styles.Assets}>
-      <ScrollView>
+      <ScrollView
+        onScroll={onScroll}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+      >
         <Text onPress={(e) => handleDetails(e)}>
           <View style={styles.scrollBox}>
-            {items.map((item) => {
+            {items.map((item: any) => {
               return <Items key={item.id} target={item} />;
             })}
           </View>
