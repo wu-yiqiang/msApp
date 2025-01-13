@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import { Link, Stack } from 'expo-router'
+import { Link, Stack, router, Tabs } from "expo-router";
 import Items from '@/app/assets/items'
 import { useState } from 'react'
 export default function Assets() {
@@ -137,20 +137,19 @@ export default function Assets() {
       update: "2025-11-23 12:34",
     },
   ];
+  const handleDetails = (event: Event) => {
+    router.navigate({ pathname: "/assets/details" });
+  }
   return (
     <View style={styles.Assets}>
-      <Stack.Screen
-        options={{
-          title: "资产",
-          headerShown: false,
-        }}
-      />
       <ScrollView>
-        <View style={styles.scrollBox}>
-          {items.map((item) => {
-            return <Items key={item.id} target={item} />;
-          })}
-        </View>
+        <Text onPress={(e) => handleDetails(e)}>
+          <View style={styles.scrollBox}>
+            {items.map((item) => {
+              return <Items key={item.id} target={item} />;
+            })}
+          </View>
+        </Text>
       </ScrollView>
     </View>
   );

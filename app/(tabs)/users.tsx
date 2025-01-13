@@ -12,7 +12,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import { Link, router } from "expo-router";
+import { Link, router, Tabs } from "expo-router";
 import avator from "@/assets/images/user.jpeg";
 export default function Index() {
   const handleUserinfo = () => {
@@ -62,7 +62,11 @@ export default function Index() {
             <Text style={styles.texts}>待点验</Text>
           </View>
           <View style={styles.tool}>
-            <MaterialCommunityIcons name="alert-circle-check" size={22} color="#0096fa" />
+            <MaterialCommunityIcons
+              name="alert-circle-check"
+              size={22}
+              color="#0096fa"
+            />
             <Text style={styles.texts}>已报废</Text>
           </View>
           <View style={styles.tool}>
@@ -112,7 +116,7 @@ export default function Index() {
         </View>
       </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({

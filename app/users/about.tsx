@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import AntDesign from '@expo/vector-icons/AntDesign'
 import Logo from '@/assets/images/logo.png'
-import { Link, Stack } from 'expo-router'
+import { Stack } from 'expo-router'
 export default function About() {
   return (
     <View style={styles.About}>
