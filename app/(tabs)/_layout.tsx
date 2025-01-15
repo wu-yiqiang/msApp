@@ -1,6 +1,7 @@
 import { View, Button, StyleSheet, ScrollView } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
+import AntDesign from "@expo/vector-icons/AntDesign";
 import { Link, Stack, router, Tabs } from "expo-router";
 
 function TabBarIcon(props) {
@@ -26,8 +27,14 @@ export default function TabLayout() {
           headerRight(props) {
             return (
               <View style={styles.HomeToolBar}>
+                <AntDesign name="search1" size={26} color="black" />
                 <Ionicons name="scan-outline" size={26} color="black" />
-                <Ionicons onPress={handleAdd} name="add-circle-outline" size={28} color="black" />
+                <Ionicons
+                  onPress={handleAdd}
+                  name="add-circle-outline"
+                  size={28}
+                  color="black"
+                />
               </View>
             );
           },
@@ -52,6 +59,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: 'flex-end',
     alignItems: "center",
-    columnGap: 6,
+    columnGap: 10,
   },
 });
