@@ -1,12 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Button,
-  FlatList,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { View, Text, StyleSheet, ScrollView, Button, FlatList, TouchableWithoutFeedback, Pressable } from 'react-native'
 import { Link, Stack, router, Tabs } from "expo-router";
 import Items from "@/app/assets/items";
 import { useEffect, useState } from "react";
@@ -126,17 +118,14 @@ export default function Assets(props: any) {
         data={items}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={Text}
-        onTouchEnd={(item) => handleDetails(item)}
         renderItem={({ item, index, separators }) => (
-          <TouchableWithoutFeedback
-            onPress={(e) => handleDetails(e)}
-          >
+          <Pressable onPress={handleDetails}>
             <Items key={item.id} target={item} />
-          </TouchableWithoutFeedback>
+          </Pressable>
         )}
       ></FlatList>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({

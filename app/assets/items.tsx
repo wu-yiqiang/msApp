@@ -2,8 +2,6 @@ import { View, Text, StyleSheet, Button, Image } from 'react-native'
 import Status from "@/components/Status";
 import CheckStatus from '@/components/CheckStatus'
 import avator from "@/assets/images/user.jpeg";
-import { Dialog } from "@/components/Dialog";
-import { Link, Stack } from "expo-router";
 import { useState } from "react";
 export default function AssetsItem(props: any) {
   const {
@@ -17,13 +15,8 @@ export default function AssetsItem(props: any) {
     updator,
     update,
   } = props?.target;
-  const [visible, setVisible] = useState(false);
-  const handleQrCode = () => {
-    setVisible(true);
-  };
-  const handleQrCodeClose = () => {
-    setVisible(false);
-  };
+
+
   return (
     <View style={styles.AssetsItem}>
       <View style={styles.currentStatus}>
@@ -100,15 +93,11 @@ export default function AssetsItem(props: any) {
         <View style={styles.opt}>
           <Button title="报废" />
         </View>
-        <View style={styles.qrcode}>
-          <Button title="生成二维码" onPress={handleQrCode} />
-        </View>
-
         <View style={styles.opt}>
           <Button title="正常" />
         </View>
       </View>
-      <Dialog visible={visible} contents={props?.target} close={handleQrCodeClose} />
+  
     </View>
   )
 }
@@ -191,8 +180,5 @@ const styles = StyleSheet.create({
   },
   opt: {
     flex: 1,
-  },
-  qrcode: {
-    flex: 2,
   },
 });
