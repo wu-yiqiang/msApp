@@ -10,19 +10,21 @@ export default function Assets(props: any) {
     router.navigate({ pathname: "/assets/details" });
   };
   const onRefresh = async () => {
-    console.log("刷新");
+    init()
   };
   const onScroll = (event: Event) => {
+    const offset = 200
     const { contentOffset, contentSize, layoutMeasurement } = event.nativeEvent;
-    const isNearTop = contentOffset.y <= 50; // 10是阈值，可以根据需要调整
+    const isNearTop = contentOffset.y <= offset; // 10是阈值，可以根据需要调整
     const isNearBottom =
-      contentOffset.y + layoutMeasurement.height >= contentSize.height - 50; // 10是阈值，可以根据需要调整
+      contentOffset.y + layoutMeasurement.height >= contentSize.height - offset; // 10是阈值，可以根据需要调整
 
     if (isNearTop && refreshing === false) {
+      onRefresh()
       console.log("滚动顶部了");
     }
 
-    if (isNearBottom) {
+    if (isNearBottom && refreshing === false) {
       const item = {
         id: new Date().getTime(),
         title: "音响",
