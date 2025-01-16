@@ -5,8 +5,5 @@ export default function Index() {
   const openModal = () => {
     router.navigate("/modal");
   };
-  const handleLogin = () => {
-    router.navigate({ pathname: "/login" });
-  };
   return <Assets />;
 }

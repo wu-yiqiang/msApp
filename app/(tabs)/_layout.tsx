@@ -12,6 +12,9 @@ export default function TabLayout() {
   const handleAdd = () => {
       router.navigate({ pathname: "/assets/add" });
   }
+    const handleLogin = () => {
+      router.navigate({ pathname: '/login' })
+    }
   return (
     <Tabs
       screenOptions={{
@@ -28,15 +31,10 @@ export default function TabLayout() {
             return (
               <View style={styles.HomeToolBar}>
                 <AntDesign name="search1" size={26} color="black" />
-                <Ionicons name="scan-outline" size={26} color="black" />
-                <Ionicons
-                  onPress={handleAdd}
-                  name="add-circle-outline"
-                  size={28}
-                  color="black"
-                />
+                <Ionicons name="scan-outline" onPress={handleLogin} size={26} color="black" />
+                <Ionicons onPress={handleAdd} name="add-circle-outline" size={28} color="black" />
               </View>
-            );
+            )
           },
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         }}
