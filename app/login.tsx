@@ -1,9 +1,8 @@
-import { View, Text, StyleSheet, Image, TextInput, Button } from 'react-native'
+import { View, Text, StyleSheet, Image, TextInput, Button, SafeAreaView } from 'react-native'
 import Logo from '@/assets/images/logo.png'
-
+// import { TextInput } from 'react-native-paper'
 import { Link, router, Stack } from 'expo-router'
 import { useState } from 'react'
-import { red } from 'react-native-reanimated/lib/typescript/Colors'
 export default function Login() {
   const [formState, setFormState] = useState({ username: '', password: '' })
   const handleToHome = () => {
@@ -23,10 +22,10 @@ export default function Login() {
       </View>
       <View style={styles.mainBox}>
         <View style={styles.contents}>
-          <TextInput style={{ height: 40 }} placeholder="Type here to translate!" onChangeText={(text) => setFormState({ ...formState, username: text })} />
-          <TextInput style={{ height: 40 }} placeholder="Type here to translate!" onChangeText={(text) => setFormState({ ...formState, password: text })} />
+          <TextInput style={styles.input} placeholder="邮箱" value={formState.username} onChangeText={(value) => setFormState({ username: value, password: formState.password })} />
+          <TextInput style={styles.input} inlineImageLeft="search_icon" value={formState.password} placeholder="密码" secureTextEntry={true} onChangeText={(value) => setFormState({ username: formState.username, password: value })} />
         </View>
-        <Button title="登陆" onPress={handleToHome}/>
+        <Button title="登陆" onPress={handleToHome} />
       </View>
     </View>
   )
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff'
   },
   topBox: {
-    height: 200,
+    height: 300,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -55,8 +54,8 @@ const styles = StyleSheet.create({
   },
   mainBox: {
     flex: 1,
-    width: '70%',
-    padding: 20,
+    width: '70%'
+    // padding: 20
   },
   contents: {
     display: 'flex',
@@ -64,6 +63,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     rowGap: 16,
-    marginBottom: 20,
+    marginBottom: 50
+  },
+  input: {
+    borderWidth: 1,
+    borderRadius: 4,
+    width: '100%',
+    fontSize: 14,
+    height: 40,
+    padding: 10,
   }
 })

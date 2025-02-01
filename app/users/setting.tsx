@@ -1,13 +1,14 @@
 import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign'
-
-import { Link, Stack } from 'expo-router'
+import { Link, Stack, router, Tabs } from 'expo-router'
 export default function Setting() {
   const handleResetPassword = () => {}
   const handleUpdate = () => {}
 
-  const handleRemoveCache = () => {}
-  const handleLoginOut = () => {}
+  const handleRemoveCache = () => { }
+  const handleLoginOut = () => {
+    router.navigate({ pathname: '/login' })
+  }
   return (
     <View style={styles.Setting}>
       <Stack.Screen
