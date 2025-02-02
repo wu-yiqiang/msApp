@@ -44,6 +44,7 @@ export default function TabLayout() {
         name="workbench"
         options={{
           title: '工作台',
+          headerShown: true,
           tabBarIcon: ({ color }) => <MaterialIcons name="workspaces" size={28} color={color} />
         }}
       />

@@ -1,11 +1,17 @@
 import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign'
+import Ionicons from '@expo/vector-icons/Ionicons'
+import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import { Link, Stack, router, Tabs } from 'expo-router'
 export default function Setting() {
   const handleResetPassword = () => {}
-  const handleUpdate = () => {}
+  const handleTheme = () => {
+    router.navigate({ pathname: '/users/theme' })
+  }
 
-  const handleRemoveCache = () => { }
+  const handleLanguage = () => {
+    router.navigate({ pathname: '/users/language' })
+  }
   const handleLoginOut = () => {
     router.navigate({ pathname: '/login' })
   }
@@ -35,20 +41,20 @@ export default function Setting() {
             <AntDesign name="right" size={14} color="black" />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleUpdate}>
+        <TouchableOpacity onPress={handleTheme}>
           <View style={styles.setting}>
             <View style={styles.left}>
-              <AntDesign name="reload1" size={18} color="#0096fa" />
-              <Text style={styles.texts}>检查更新</Text>
+              <Ionicons name="color-palette-outline" size={18} color="#0096fa" />
+              <Text style={styles.texts}>主题</Text>
             </View>
             <AntDesign name="right" size={14} color="black" />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleRemoveCache}>
+        <TouchableOpacity onPress={handleLanguage}>
           <View style={styles.setting}>
             <View style={styles.left}>
-              <AntDesign name="delete" size={18} color="#0096fa" />
-              <Text style={styles.texts}>清空缓存</Text>
+              <MaterialIcons name="language" size={18} color="#0096fa" />
+              <Text style={styles.texts}>语言</Text>
             </View>
             <AntDesign name="right" size={14} color="black" />
           </View>

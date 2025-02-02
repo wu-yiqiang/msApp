@@ -2,9 +2,9 @@ import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-n
 import EvilIcons from '@expo/vector-icons/EvilIcons'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import AntDesign from '@expo/vector-icons/AntDesign'
-import Feather from '@expo/vector-icons/Feather'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
+import Feather from '@expo/vector-icons/Feather'
 import { Link, router, Tabs } from 'expo-router'
 import avator from '@/assets/images/user.jpeg'
 export default function Workbench() {
@@ -16,51 +16,19 @@ export default function Workbench() {
     <View style={styles.Workbench}>
       <View style={styles.boxs}>
         <View style={styles.itembox}>
-          <MaterialIcons name="approval" size={40} color="#0096fa" />
+          <MaterialIcons name="home-repair-service" size={40} color="#0096fa" />
           <Text style={styles.texts}>报修</Text>
         </View>
         <View style={styles.itembox}>
-          <FontAwesome name="calendar-check-o" size={40} color="#0096fa" />
+          <AntDesign name="barschart" size={40} color="#0096fa" />
           <Text style={styles.texts}>报表</Text>
         </View>
         <View style={styles.itembox}>
-          <MaterialCommunityIcons name="alert-circle-check" size={40} color="#0096fa" />
+          <Feather name="database" size={40} color="#0096fa" />
           <Text style={styles.texts}>入库</Text>
         </View>
         <View style={styles.itembox}>
-          <Feather name="check-square" size={40} color="#0096fa" />
-          <Text style={styles.texts}>登记</Text>
-        </View>
-        <View style={styles.itembox}>
-          <Feather name="check-square" size={40} color="#0096fa" />
-          <Text style={styles.texts}>登记</Text>
-        </View>
-        <View style={styles.itembox}>
-          <Feather name="check-square" size={40} color="#0096fa" />
-          <Text style={styles.texts}>登记</Text>
-        </View>
-        <View style={styles.itembox}>
-          <Feather name="check-square" size={40} color="#0096fa" />
-          <Text style={styles.texts}>登记</Text>
-        </View>
-        <View style={styles.itembox}>
-          <Feather name="check-square" size={40} color="#0096fa" />
-          <Text style={styles.texts}>登记</Text>
-        </View>
-        <View style={styles.itembox}>
-          <Feather name="check-square" size={40} color="#0096fa" />
-          <Text style={styles.texts}>登记</Text>
-        </View>
-        <View style={styles.itembox}>
-          <Feather name="check-square" size={40} color="#0096fa" />
-          <Text style={styles.texts}>登记</Text>
-        </View>
-        <View style={styles.itembox}>
-          <Feather name="check-square" size={40} color="#0096fa" />
-          <Text style={styles.texts}>登记</Text>
-        </View>
-        <View style={styles.itembox}>
-          <Feather name="check-square" size={40} color="#0096fa" />
+          <AntDesign name="calendar" size={40} color="#0096fa" />
           <Text style={styles.texts}>登记</Text>
         </View>
       </View>
@@ -76,15 +44,16 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   boxs: {
-    padding: 10,
+    padding: 20,
     borderRadius: 4,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: "flex-start",
+    alignItems: "center",
     flexWrap: "wrap",
+    gap: 30,
   },
   itembox: {
-    flex: 1,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
