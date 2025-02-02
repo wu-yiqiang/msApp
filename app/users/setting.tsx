@@ -3,6 +3,8 @@ import AntDesign from '@expo/vector-icons/AntDesign'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import { Link, Stack, router, Tabs } from 'expo-router'
+import i18n  from '@/local'
+
 export default function Setting() {
   const handleResetPassword = () => {}
   const handleTheme = () => {
@@ -27,7 +29,7 @@ export default function Setting() {
           <View style={styles.setting}>
             <View style={styles.left}>
               <AntDesign name="user" size={18} color="#0096fa" />
-              <Text style={styles.texts}>编辑信息</Text>
+              <Text style={styles.texts}>{i18n.t('editUserInfo')}</Text>
             </View>
             <AntDesign name="right" size={14} color="black" />
           </View>
@@ -36,7 +38,7 @@ export default function Setting() {
           <View style={styles.setting}>
             <View style={styles.left}>
               <AntDesign name="lock" size={18} color="#0096fa" />
-              <Text style={styles.texts}>修改密码</Text>
+              <Text style={styles.texts}>{i18n.t('editPassword')}</Text>
             </View>
             <AntDesign name="right" size={14} color="black" />
           </View>
@@ -45,7 +47,7 @@ export default function Setting() {
           <View style={styles.setting}>
             <View style={styles.left}>
               <Ionicons name="color-palette-outline" size={18} color="#0096fa" />
-              <Text style={styles.texts}>主题</Text>
+              <Text style={styles.texts}>{i18n.t('theme')}</Text>
             </View>
             <AntDesign name="right" size={14} color="black" />
           </View>
@@ -54,7 +56,7 @@ export default function Setting() {
           <View style={styles.setting}>
             <View style={styles.left}>
               <MaterialIcons name="language" size={18} color="#0096fa" />
-              <Text style={styles.texts}>语言</Text>
+              <Text style={styles.texts}>{i18n.t('language')}</Text>
             </View>
             <AntDesign name="right" size={14} color="black" />
           </View>
