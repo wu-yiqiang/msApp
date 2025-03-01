@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, ScrollView, Button, FlatList, TouchableWithoutFeedback, Pressable } from 'react-native'
 import { Link, Stack, router, Tabs } from "expo-router";
 import Items from "@/app/assets/items";
+import {getTest} from '@/api/public'
 import { useEffect, useState } from "react";
 export default function Assets(props: any) {
   const [items, setItems] = useState<any>([]);
@@ -104,8 +105,13 @@ export default function Assets(props: any) {
       },
     ]);
   };
+  const getLists = async () => {
+    const data = await getTest()
+    console.log('data', data)
+  }
   useEffect(() => {
     init();
+    getLists()
   }, []);
   if (!items.length) return <Text>暂无数据</Text>;
   return (

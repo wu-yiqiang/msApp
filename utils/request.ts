@@ -20,8 +20,10 @@ export const request = (req: Request) => {
           Object.keys(params).length ? "?" : ""
         )
         .replace(/&$/, "");
+  console.log("request url", url)
   return fetch(url, options)
     .then((response) => {
+      console.log('resonse', response)
       if (!response.ok) {
         Alert.alert("请求接口失败")
       }
