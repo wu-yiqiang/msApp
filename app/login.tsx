@@ -1,12 +1,22 @@
 import { View, Text, StyleSheet, Image, TextInput, Button, SafeAreaView } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import Logo from '@/assets/images/logo.png'
 // import { TextInput } from 'react-native-paper'
 import { Link, router, Stack } from 'expo-router'
+import { PostLogin } from '@/api/public'
 import { useState } from 'react'
+
 export default function Login() {
-  const [formState, setFormState] = useState({ username: '', password: '' })
-  const handleToHome = () => {
-     router.navigate({ pathname: '/' })
+  const [formState, setFormState] = useState({ username: 'python222', password: '123456' })
+  const handleToHome = async () => {
+    const { data } = await PostLogin(formState)
+    const token = data?.token
+    if (token) {
+      console.log('sssssssdsd111', token)
+      await AsyncStorage.setItem('msAppToken', token)
+      console.log('sssssssdsd', token)
+      router.navigate({ pathname: '/' })
+    }
   }
   return (
     <View style={styles.Login}>
