@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, ScrollView,Alert } from 'react-native'
-import { CheckBox } from '@rneui/themed'
+// import { CheckBox } from '@rneui/themed'
 import { Link, Stack } from 'expo-router'
 import * as Updates from 'expo-updates'
 import { useState } from 'react'
@@ -20,8 +20,8 @@ export default function Language() {
           title: '语言设置'
         }}
       />
-      <CheckBox checked={i18n.locale === 'en'} onPress={() => handleLanguage('en')} checkedIcon="dot-circle-o" uncheckedIcon="circle-o" title="English" />
-      <CheckBox checked={i18n.locale === 'zh'} onPress={() => handleLanguage('zh')} checkedIcon="dot-circle-o" uncheckedIcon="circle-o" title="简体中文" />
+      {/* <CheckBox checked={i18n.locale === 'en'} onPress={() => handleLanguage('en')} checkedIcon="dot-circle-o" uncheckedIcon="circle-o" title="English" />
+      <CheckBox checked={i18n.locale === 'zh'} onPress={() => handleLanguage('zh')} checkedIcon="dot-circle-o" uncheckedIcon="circle-o" title="简体中文" /> */}
     </View>
   )
 }
