@@ -1,9 +1,10 @@
 import { Request } from "@/types/request";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 export const request = async (req: Request) => {
-  const baseURL = 'https://sutter9527.top/msapp'
+  const baseURL = 'http://192.168.110.180:8000'
+  // const baseURL = 'https://sutter9527.top/msapp'
   let { url, method = 'GET', params = null, data = null, headers = {} } = req
-  let uri = baseURL+url
+  let uri = baseURL + url
   const token = await AsyncStorage.getItem('msAppToken')
   const options = {
     method,
@@ -16,11 +17,10 @@ export const request = async (req: Request) => {
   }
   if (params)
     uri +=
-      uri +
-      '?' +
       Object.entries(params)
         .reduce((t, v) => `${t}${v[0]}=${encodeURIComponent(v[1])}&`, Object.keys(params).length ? '?' : '')
-        .replace(/&$/, '')
+      .replace(/&$/, '')
+  console.log('uri', uri)
   return fetch(uri, options)
     .then((response) => {
       if (!response.ok) {

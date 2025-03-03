@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Link, Stack, router, Tabs } from 'expo-router'
 import i18n  from '@/local'
 
@@ -10,11 +11,11 @@ export default function Setting() {
   const handleTheme = () => {
     router.navigate({ pathname: '/users/theme' })
   }
-
   const handleLanguage = () => {
     router.navigate({ pathname: '/users/language' })
   }
-  const handleLoginOut = () => {
+  const handleLoginOut = async () => {
+    await AsyncStorage.removeItem('msAppToken')
     router.navigate({ pathname: '/login' })
   }
   return (

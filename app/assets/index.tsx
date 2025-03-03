@@ -6,25 +6,20 @@ import { GetAssetsPage } from '@/api/public'
 import { useEffect, useState } from 'react'
 export default function Assets(props: any) {
   const [items, setItems] = useState<any>([])
-  let [refreshing, setRefreshing] = useState(false)
+  const [params, setParams] = useState({ pageSize: 30, pageNo: 1 })
+  let [refreshing, setRefreshing] = useState(true)
   const handleDetails = (event: Event) => {
     console.log('sss')
     router.navigate({ pathname: '/assets/details' })
   }
-  const loadMore = () => {
-    const item = {
-      id: new Date().getTime(),
-      title: '音响',
-      categopry: '办公用品',
-      department: '人事行政部',
-      number: 'FZC00124533',
-      status: 0,
-      assetsStatus: 1,
-      belong: 'sutter',
-      updator: 'Tom',
-      update: '2025-11-23 12:34'
-    }
-    setItems([...items, item])
+  const loadMore = async () => {
+    if(refreshing) return
+    setParams({ pageSize: params.pageSize, pageNo: params.pageNo + 1 })
+    setRefreshing(true)
+    const { data } = await GetAssetsPage(params).finally(() => {
+      setRefreshing(false)
+    })
+    setItems([...items, ...JSON.parse(data)])
     console.log('滚动低部了')
   }
   const loadRefresh = () => {
@@ -32,15 +27,13 @@ export default function Assets(props: any) {
   }
 
   const getAssetsPage = async () => {
-    const { data } = await GetAssetsPage()
-    console.log('sds', typeof data)
+    setRefreshing(true)
+    const { data } = await GetAssetsPage(params).finally(() => {
+      setRefreshing(false)
+    })
     setItems(JSON.parse(data) ?? [])
   }
   const init = async () => {
-    const token = await AsyncStorage.getItem('msAppToken')
-    if (!token) {
-      router.navigate({ pathname: '/login' })
-    }
     await getAssetsPage()
   }
   useEffect(() => {

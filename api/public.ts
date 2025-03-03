@@ -10,11 +10,11 @@ export const PostLogin = (data: any) => {
   })
 }
 
-export const GetAssetsPage = () => {
+export const GetAssetsPage = (params: any) => {
   return request({
     url: '/user/assets/page',
     method: 'GET',
-    params: null,
+    params: params,
     data: null,
     headers: null
   })

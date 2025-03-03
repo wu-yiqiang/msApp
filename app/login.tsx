@@ -12,9 +12,7 @@ export default function Login() {
     const { data } = await PostLogin(formState)
     const token = data?.token
     if (token) {
-      console.log('sssssssdsd111', token)
       await AsyncStorage.setItem('msAppToken', token)
-      console.log('sssssssdsd', token)
       router.navigate({ pathname: '/' })
     }
   }
