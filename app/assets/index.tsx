@@ -9,7 +9,6 @@ export default function Assets(props: any) {
   const [params, setParams] = useState({ pageSize: 30, pageNo: 1 })
   let [refreshing, setRefreshing] = useState(true)
   const handleDetails = (event: Event) => {
-    console.log('sss')
     router.navigate({ pathname: '/assets/details' })
   }
   const loadMore = async () => {
@@ -20,7 +19,7 @@ export default function Assets(props: any) {
       setRefreshing(false)
     })
     setItems([...items, ...JSON.parse(data)])
-    console.log('滚动低部了')
+    console.log('滚动低部了', items)
   }
   const loadRefresh = () => {
     console.log('滚动顶部了')

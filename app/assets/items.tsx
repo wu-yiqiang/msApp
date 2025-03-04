@@ -97,7 +97,6 @@ export default function AssetsItem(props: any) {
           <Button title="正常" />
         </View>
       </View>
-  
     </View>
   )
 }
