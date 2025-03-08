@@ -12,7 +12,7 @@ export default function About() {
       <View style={styles.logoinfo}>
         <Image style={styles.logo} source={Logo} />
         <View style={styles.appname}>
-          <Text style={styles.name}>MSAPP</Text>
+          <Text style={styles.name}>EAMS APP</Text>
         </View>
       </View>
       <View style={styles.infoitem}>

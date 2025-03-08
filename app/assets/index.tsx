@@ -1,50 +1,45 @@
 import { View, Text, StyleSheet, ScrollView, Button, FlatList, TouchableWithoutFeedback, Pressable } from 'react-native'
 import { Link, Stack, router, Tabs } from "expo-router";
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import Items from '@/app/assets/items'
 import { GetAssetsPage } from '@/api/public'
 import { useEffect, useState } from 'react'
+import { Empty } from '@nutui/nutui-react-native'
 export default function Assets(props: any) {
   const [items, setItems] = useState<any>([])
   const [params, setParams] = useState({ pageSize: 30, pageNo: 1 })
-  let [refreshing, setRefreshing] = useState(true)
+  let [loading, setLoading] = useState(false)
   const handleDetails = (event: Event) => {
     router.navigate({ pathname: '/assets/details' })
   }
   const loadMore = async () => {
-    if(refreshing) return
+    console.log('滚动到最底部了')
     setParams({ pageSize: params.pageSize, pageNo: params.pageNo + 1 })
-    setRefreshing(true)
-    const { data } = await GetAssetsPage(params).finally(() => {
-      setRefreshing(false)
-    })
-    setItems([...items, ...JSON.parse(data)])
-    console.log('滚动低部了', items)
+    getAssetsPage()
   }
   const loadRefresh = () => {
+    setItems([])
+    getAssetsPage()
     console.log('滚动顶部了')
   }
 
   const getAssetsPage = async () => {
-    setRefreshing(true)
+     if (loading) return
+    setLoading(true)
     const { data } = await GetAssetsPage(params).finally(() => {
-      setRefreshing(false)
+      setLoading(false)
     })
-    setItems(JSON.parse(data) ?? [])
-  }
-  const init = async () => {
-    await getAssetsPage()
+    setItems([...items, ...JSON.parse(data)])
   }
   useEffect(() => {
-    init()
+    loadRefresh()
   }, [])
-  if (!items.length) return <Text>暂无数据</Text>
   return (
     <View style={styles.Assets}>
       <FlatList
+        ListEmptyComponent={() => <Empty description="无数据" />}
         onRefresh={loadRefresh}
         onEndReached={loadMore}
-        refreshing={refreshing}
+        refreshing={loading}
         onEndReachedThreshold={0.4}
         data={items}
         showsVerticalScrollIndicator={false}
